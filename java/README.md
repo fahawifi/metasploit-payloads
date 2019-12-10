@@ -2,11 +2,13 @@ https://github.com/xiaohuanshu/persistent-androidpayload
 修改Metasploit安卓Payload源码以实现持久化访问
 
 # Building the Java and Android Meterpreter
+只要下载java文件，AS打开androidpayload文件夹，但是mvn命令生成jar文件是在java目录下，而不是androidpayload目录——会出错
 
 1. Install Maven 3.5 or above and Java8, this will depend on your OS
 apt-get update
 apt-get -y install maven
 update-alternatives  --config mvn
+update-alternatives  --config javac
 cd metasploit-payloads/tree/master/java
 mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
