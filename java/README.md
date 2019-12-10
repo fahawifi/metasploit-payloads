@@ -11,7 +11,8 @@ cd metasploit-payloads/tree/master/java
 mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 
 
-2. Download the [Android SDK](https://developer.android.com/sdk/index.html)
+2. Download the [Android SDK](https://developer.android.com/sdk/index.html), and the [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) somewhere
+
 3. Install Android SDK Platforms最新29, 10 and 19, and update the "Android SDK Tools" and "Android SDK Platform-tools"
 
 a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
