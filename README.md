@@ -1,6 +1,8 @@
 metasploit-payloads >
 =====================
 
+只要下载java文件，AS打开androidpayload文件夹，但是mvn命令生成jar文件是在java目录下，而不是androidpayload目录——会出错
+
 Appveyor build status: [![Build Status](https://ci.appveyor.com/api/projects/status/github/rapid7/metasploit-payloads)](https://ci.appveyor.com/project/appveyor-r7/metasploit-payloads)
 
 This is a unified repository for different Metasploit Framework payloads, which merges these repositories:
