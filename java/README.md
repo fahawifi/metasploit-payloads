@@ -1,9 +1,33 @@
+https://github.com/xiaohuanshu/persistent-androidpayload
+修改Metasploit安卓Payload源码以实现持久化访问
+
 # Building the Java and Android Meterpreter
 
-1. Install Maven and Java, this will depend on your OS
-1. Download the [Android SDK](https://developer.android.com/sdk/index.html)
-1. Install Android SDK Platforms 3, 10 and 19, and update the "Android SDK Tools" and "Android SDK Platform-tools"
-1. Compile the Android and Java Meterpreter, which deploys to the ../metasploit-frameworks folder
+1. Install Maven 3.5 or above and Java8, this will depend on your OS
+apt-get update
+apt-get -y install maven
+update-alternatives  --config mvn
+cd metasploit-payloads/tree/master/java
+mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
+
+
+2. Download the [Android SDK](https://developer.android.com/sdk/index.html)
+3. Install Android SDK Platforms最新29, 10 and 19, and update the "Android SDK Tools" and "Android SDK Platform-tools"
+
+a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
+下载Android SDK Platforms——API version 最新的SDK（compileSdkVersion）29+10 +19
+
+b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾, 
+Android SDK Build Tools
+Android SDK Platform-Tools 29.0.5
+Android SDK Tools 26.1.1
+NDK(Side by side)20.0.055
+Cmake 3.10.2
+Android SDK Build-Tools 25.0.0(AhMyth)
+Android Emulator 29.2.11
+
+4. Compile the Android and Java Meterpreter, which deploys to the ../metasploit-frameworks folder
+mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
 ```
 mvn package -Dandroid.sdk.path=/path/to/android-sdk -Dandroid.release=true -P deploy
 ```
@@ -17,7 +41,6 @@ brew cask install caskroom/versions/java8
 brew cask install android-sdk
 brew install maven
 sdkmanager --licenses
-sdkmanager "platforms;android-3"
 sdkmanager "platforms;android-10"
 sdkmanager "platforms;android-19"
 
