@@ -4,19 +4,29 @@ https://github.com/xiaohuanshu/persistent-androidpayload
 # Building the Java and Android Meterpreter
 只要下载java文件，AS打开androidpayload文件夹，但是mvn命令生成jar文件是在java目录下，而不是androidpayload目录——会出错
 
-1. Install Maven 3.5 or above and Java8, this will depend on your OS
+1. 根据自身的环境安装Maven(3.5以上版本) 和 Java8
+
 apt-get update
+
 apt-get -y install maven
+
 update-alternatives  --config mvn
+
 update-alternatives  --config javac
+
 cd metasploit-payloads/tree/master/java
-mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
-mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
-注意其中的sdk和ndk路径要设置正确，这一步有可能爆出错误，但是只要AndroidPayload for Metasploit编译成功就可以了
 
-2. Download the [Android SDK](https://developer.android.com/sdk/index.html), and the [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) somewhere
+java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 
-3. Install Android SDK Platforms最新29, 10 and 19, and update the "Android SDK Tools" and "Android SDK Platform-tools"
+Android 木马：mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
+
+mvn -D deploy.path=target -P android -P deploy -Dandroid.ndk.path=$ANDROID_NDK_HOME -Dandroid.sdk.path=$ANDROID_SDK_ROOT -Dandroid.release=true package
+
+注意其中的sdk和ndk路径要在AS设置正确，这一步有可能爆出错误，但是只要AndroidPayload for Metasploit编译成功就可以了
+
+2. 安装 [Android SDK](https://developer.android.com/sdk/index.html), 和 [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) 
+
+3. 安装 Android SDK Platforms最新29, 10 and 19, 并更新 "Android SDK Tools" 和 "Android SDK Platform-tools"
 
 a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
 下载Android SDK Platforms——API version 最新的SDK（compileSdkVersion）29+10 +19
@@ -30,7 +40,7 @@ Cmake 3.10.2
 Android SDK Build-Tools 25.0.0(AhMyth)
 Android Emulator 29.2.11
 
-4. Compile the Android and Java Meterpreter, which deploys to the ../metasploit-frameworks folder
+4. 编译 Android and Java Meterpreter, which deploys to the ../metasploit-frameworks 文件夹
 mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
 ```
 mvn package -Dandroid.sdk.path=/path/to/android-sdk -Dandroid.release=true -P deploy
