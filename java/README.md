@@ -9,7 +9,8 @@ apt-get -y install maven
 update-alternatives  --config mvn
 cd metasploit-payloads/tree/master/java
 mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
-
+mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
+注意其中的sdk和ndk路径要设置正确，这一步有可能爆出错误，但是只要AndroidPayload for Metasploit编译成功就可以了
 
 2. Download the [Android SDK](https://developer.android.com/sdk/index.html), and the [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) somewhere
 
@@ -31,6 +32,7 @@ Android Emulator 29.2.11
 mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
 ```
 mvn package -Dandroid.sdk.path=/path/to/android-sdk -Dandroid.release=true -P deploy
+
 ```
 Next time you run `msfconsole`, you should see: `WARNING: Local files may be incompatible with the Metasploit Framework`.
 This means that msfconsole is now using your newly built version of the Java and Android Meterpreter :)
