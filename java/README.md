@@ -15,15 +15,6 @@ update-alternatives  --config mvn
 
 update-alternatives  --config javac
 
-cd metasploit-payloads/tree/master/java
-
-java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
-
-Android 木马：mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
-
-mvn -D deploy.path=target -P android -P deploy -Dandroid.ndk.path=$ANDROID_NDK_HOME -Dandroid.sdk.path=$ANDROID_SDK_ROOT -Dandroid.release=true package
-
-注意其中的sdk和ndk路径要在AS设置正确，这一步有可能爆出错误，但是只要AndroidPayload for Metasploit编译成功就可以了
 
 2. 安装 [Android SDK](https://developer.android.com/sdk/index.html), 和 [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) 
 
@@ -41,13 +32,22 @@ Cmake 3.10.2
 Android SDK Build-Tools 25.0.0(AhMyth)
 Android Emulator 29.2.11
 
-4. 编译 Android and Java Meterpreter, which deploys to the ../metasploit-frameworks 文件夹
+4. 编译AndroidPayload for Metasploit ... SUCCESS 即成功,并把编译新生成的/java/target/data中android文件夹——复制到Metasploit-framework根目录下的data文件夹。
+Android 木马：
+cd metasploit-payloads/tree/master/java
 mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
-```
-mvn package -Dandroid.sdk.path=/path/to/android-sdk -Dandroid.release=true -P deploy
+返回成功信息：
+[INFO] AndroidPayload for Metasploit ...................... SUCCESS [  8.920 s]
+[INFO] Android Meterpreter ................................ FAILURE [  4.153 s]
+[INFO] BUILD FAILURE
 
-```
-Next time you run `msfconsole`, you should see: `WARNING: Local files may be incompatible with the Metasploit Framework`.
+cd /java/target/data
+cp -r android /usr/share/metasploit-framework/data
+
+
+java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
+
+5.Next time you run `msfconsole`, you should see: `WARNING: Local files may be incompatible with the Metasploit Framework`.
 This means that msfconsole is now using your newly built version of the Java and Android Meterpreter :)
 
 
