@@ -2,7 +2,8 @@ https://github.com/xiaohuanshu/persistent-androidpayload
 修改Metasploit安卓Payload源码以实现持久化访问
 
 # Building the Java and Android Meterpreter
-只要下载java文件，AS打开androidpayload文件夹，但是mvn命令生成jar文件是在java目录下，而不是androidpayload目录——会出错
+只要下载java文件，AS打开androidpayload文件夹，但是mvn命令生成jar文件是在java目录下，而不是androidpayload目录——会出错。
+pom.xml有感叹号错误不必理会，mvn package命令会下载缺失Maven文件
 
 1. 根据自身的环境安装Maven(3.5以上版本) 和 Java8
 
