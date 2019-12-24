@@ -35,7 +35,9 @@ Cmake 3.10.
 Android SDK Build-Tools 25.0.0(AhMyth)
 Android Emulator 29.2.11
 
-4. 编译AndroidPayload for Metasploit ... SUCCESS 即成功,并把编译新生成的/java/target/data中android文件夹——复制到Metasploit-framework根目录下的data文件夹。
+4. 项目没有gradle/wrapper文件夹，新建build.gradle（已上传），才能AS->File->Sync Project with Gradle Files
+
+5. 编译AndroidPayload for Metasploit ... SUCCESS 即成功,并把编译新生成的/java/target/data中android文件夹——复制到Metasploit-framework根目录下的data文件夹。
 Android 木马：
 
 cd metasploit-payloads/tree/master/java
@@ -58,7 +60,7 @@ java木马：mvn -D deploy.path=/usr/share/metasploit-framework -P deploy packag
 
 
 
-5.通过msfvenom命令生成APK:
+6.通过msfvenom命令生成APK:
 
 msfvenom
 
