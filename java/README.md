@@ -24,7 +24,7 @@ a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
 
 下载Android SDK Platforms——API version 最新的SDK（compileSdkVersion）29+10 +19
 
-b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾, 这里没有安装齐全mvn package会彻底Erro
+b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾, a和b这里没有安装齐全mvn package会彻底Erro
 
 Android SDK Build Tools
 
