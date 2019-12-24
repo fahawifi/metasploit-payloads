@@ -18,13 +18,13 @@ update-alternatives  --config javac
 
 2. 安装 [Android SDK](https://developer.android.com/sdk/index.html), 和 [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html) 
 
-3. 安装 Android SDK Platforms最新29, 10 and 19, 并更新 "Android SDK Tools" 和 "Android SDK Platform-tools"
+3. 安装 Android SDK Platforms最新29, 10 and 19, 并更新 "Android SDK Tools" 和 "Android SDK Platform-tools"， a和b这里没有安装齐全mvn package会彻底Erro，删除Android SDK和NDK文件夹，重新到setting里下载
 
 a. AS->File->Setting->System Setting->Android SDK->SDK Platforms
 
 下载Android SDK Platforms——API version 最新的SDK（compileSdkVersion）29+10 +19
 
-b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾, a和b这里没有安装齐全mvn package会彻底Erro
+b. AS->File->Setting->System Setting->Android SDK->SDK Tools->Show Package Details打勾,
 
 Android SDK Build Tools
 
